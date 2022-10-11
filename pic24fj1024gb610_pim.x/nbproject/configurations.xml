@@ -23,8 +23,8 @@
         <itemPath>bsp/lcd_printf.c</itemPath>
         <itemPath>bsp/timer_1ms.c</itemPath>
       </logicalFolder>
-      <itemPath>main.c</itemPath>
       <itemPath>system.c</itemPath>
+      <itemPath>newmain.c</itemPath>
     </logicalFolder>
     <logicalFolder displayName="Important Files" name="ExternalFiles" projectFiles="false">
       <itemPath>Makefile</itemPath>
