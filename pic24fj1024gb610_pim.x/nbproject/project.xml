@@ -3,12 +3,20 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>PIC24FJ1024Gb610_Automated_605rc113</name>
-            <creation-uuid>e59aadfc-1201-42f3-8eda-987131075144</creation-uuid>
+            <name>explorer16_demo_pic24fj1024gb610_pim</name>
+            <creation-uuid>f2026c1a-4a37-45c5-abf6-d8251b801cc8</creation-uuid>
             <make-project-type>0</make-project-type>
+            <c-extensions>c</c-extensions>
+            <cpp-extensions/>
+            <header-extensions>h</header-extensions>
             <sourceEncoding>ISO-8859-1</sourceEncoding>
+            <asminc-extensions/>
             <make-dep-projects/>
-            <sourceRootList/>
+            <sourceRootList>
+                <sourceRootElem>../../bsp</sourceRootElem>
+                <sourceRootElem>../src</sourceRootElem>
+                <sourceRootElem>.</sourceRootElem>
+            </sourceRootList>
             <confList>
                 <confElem>
                     <name>default</name>
