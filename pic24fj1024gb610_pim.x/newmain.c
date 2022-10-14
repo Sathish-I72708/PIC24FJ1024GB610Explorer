@@ -69,92 +69,92 @@ int main ( void )
     LATB = b;
     uint8_t t = add(a,b,c);
     
-    /* Call the System Initialize routine*/
-    SYS_Initialize ( );
+//     /* Call the System Initialize routine*/
+//     SYS_Initialize ( );
     
-    /* To determine how the LED and Buttons are mapped to the actual board
-     * features, please see io_mapping.h. */
-    LED_Enable ( LED_BLINK_ALIVE );
-    LED_Enable ( LED_BUTTON_PRESSED );
+//     /* To determine how the LED and Buttons are mapped to the actual board
+//      * features, please see io_mapping.h. */
+//     LED_Enable ( LED_BLINK_ALIVE );
+//     LED_Enable ( LED_BUTTON_PRESSED );
 
-    BUTTON_Enable ( BUTTON_DEMO );
+//     BUTTON_Enable ( BUTTON_DEMO );
     
-    /* Get a timer event once every 100ms for the blink alive. */
-    TIMER_SetConfiguration ( TIMER_CONFIGURATION_1MS );
-    TIMER_RequestTick( &BlinkAliveEventHandler, 500 );
-    TIMER_RequestTick( &ScreenUpdateEventHandler, 170 );
+//     /* Get a timer event once every 100ms for the blink alive. */
+//     TIMER_SetConfiguration ( TIMER_CONFIGURATION_1MS );
+//     TIMER_RequestTick( &BlinkAliveEventHandler, 500 );
+//     TIMER_RequestTick( &ScreenUpdateEventHandler, 170 );
     
-    /* The TIMER_1MS configuration should come before the RTCC initialization as
-     * there are some processor modules that require the TIMER_1MS module to be
-     * configured before the RTCC module, as the RTCC module is emulated using
-     * the TIMER_1MS module. */
-    time.bcdFormat = false;
-    lastTime.bcdFormat = false;
-    RTCC_BuildTimeGet( &time );
-    RTCC_Initialize( &time );
-    memset(&lastTime,0,sizeof(lastTime)); 
+//     /* The TIMER_1MS configuration should come before the RTCC initialization as
+//      * there are some processor modules that require the TIMER_1MS module to be
+//      * configured before the RTCC module, as the RTCC module is emulated using
+//      * the TIMER_1MS module. */
+//     time.bcdFormat = false;
+//     lastTime.bcdFormat = false;
+//     RTCC_BuildTimeGet( &time );
+//     RTCC_Initialize( &time );
+//     memset(&lastTime,0,sizeof(lastTime)); 
 
-    ADC_SetConfiguration ( ADC_CONFIGURATION_DEFAULT );
-    ADC_ChannelEnable ( ADC_CHANNEL_POTENTIOMETER );
+//     ADC_SetConfiguration ( ADC_CONFIGURATION_DEFAULT );
+//     ADC_ChannelEnable ( ADC_CHANNEL_POTENTIOMETER );
     
-    /* Clear the screen */
-    printf( "\f" );   
+//     /* Clear the screen */
+//     printf( "\f" );   
     
-    while ( 1 )
-    {
-        adcResult = ADC_Read10bit( ADC_CHANNEL_POTENTIOMETER );
+//     while ( 1 )
+//     {
+//         adcResult = ADC_Read10bit( ADC_CHANNEL_POTENTIOMETER );
 
-        RTCC_TimeGet( &time );
+//         RTCC_TimeGet( &time );
         
-        //Only print if the ADC value or time has changed since the last time 
-        // around the loop and we haven't updated recently too recently.
-        if(allowScreenUpdate == true)
-        {
-            if( (adcResult != lastAdcResult) ||
-                (memcmp(&time, &lastTime, sizeof(time)) != MEMCMP_VALUES_IDENTICAL) )
-            {                  
-                //Either ADC or time has changed, and the screen update refresh
-                // limit has expired, update the screen.
-                allowScreenUpdate = false;
+//         //Only print if the ADC value or time has changed since the last time 
+//         // around the loop and we haven't updated recently too recently.
+//         if(allowScreenUpdate == true)
+//         {
+//             if( (adcResult != lastAdcResult) ||
+//                 (memcmp(&time, &lastTime, sizeof(time)) != MEMCMP_VALUES_IDENTICAL) )
+//             {                  
+//                 //Either ADC or time has changed, and the screen update refresh
+//                 // limit has expired, update the screen.
+//                 allowScreenUpdate = false;
                 
-                printf( "Time %02d:%02d:%02d   Pot = %4d\r\n", 
-                        time.hour, 
-                        time.minute, 
-                        time.second, 
-                        adcResult
-                      );
+//                 printf( "Time %02d:%02d:%02d   Pot = %4d\r\n", 
+//                         time.hour, 
+//                         time.minute, 
+//                         time.second, 
+//                         adcResult
+//                       );
 
-                lastAdcResult = adcResult;
-                memcpy(&lastTime, &time, sizeof(time));
-            }
-        }
+//                 lastAdcResult = adcResult;
+//                 memcpy(&lastTime, &time, sizeof(time));
+//             }
+//         }
 
-        if(toggleBlinkAlive == true)
-        {
-            LED_Toggle( LED_BLINK_ALIVE );
-            toggleBlinkAlive = false;
-        }
+//         if(toggleBlinkAlive == true)
+//         {
+//             LED_Toggle( LED_BLINK_ALIVE );
+//             toggleBlinkAlive = false;
+//         }
         
-        /* To determine how the LED and Buttons are mapped to the actual board
-         * features, please see io_mapping.h. */
-        if(BUTTON_IsPressed( BUTTON_DEMO ) == true)
-        {
-            LED_On( LED_BUTTON_PRESSED );
-        }
-        else
-        {
-            LED_Off( LED_BUTTON_PRESSED );
-        }
-    }
-}
+//         /* To determine how the LED and Buttons are mapped to the actual board
+//          * features, please see io_mapping.h. */
+//         if(BUTTON_IsPressed( BUTTON_DEMO ) == true)
+//         {
+//             LED_On( LED_BUTTON_PRESSED );
+//         }
+//         else
+//         {
+//             LED_Off( LED_BUTTON_PRESSED );
+//         }
+//     }
+ }
 
-static void BlinkAliveEventHandler(void)
-{    
-    toggleBlinkAlive = true;
-}
+// static void BlinkAliveEventHandler(void)
+// {    
+//     toggleBlinkAlive = true;
+// }
 
-static void ScreenUpdateEventHandler(void)
-{
-    allowScreenUpdate = true;
-}
+// static void ScreenUpdateEventHandler(void)
+// {
+//     allowScreenUpdate = true;
+// }
 
