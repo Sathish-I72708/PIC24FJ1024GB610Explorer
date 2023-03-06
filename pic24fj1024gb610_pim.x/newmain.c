@@ -62,12 +62,13 @@ int main ( void )
     
     //Custom Code Added here
     uint8_t a = 0x05;
-    LATA = a;
+    TMR1 = a;
     uint8_t c = 0x1F;
-    TRISA = c;
+    TMR2 = c;
     uint8_t b =0x08;
-    LATB = b;
+    TMR3 = b;
     uint8_t t = add(a,b,c);
+    TMR4 = t;
     
 //     /* Call the System Initialize routine*/
 //     SYS_Initialize ( );
